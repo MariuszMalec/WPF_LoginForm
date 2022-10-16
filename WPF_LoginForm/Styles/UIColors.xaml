@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--https://youtu.be/kxhvwGEqvcs?t=254-->
+    <!--Bacground colors -->
+    <Color x:Key="primaryBackColor">#462AD8</Color>
+
+    <!--windows border colors-->
+    <Color x:Key="winBorderColor">#8A16C1</Color>
+
+    <!--fonts colors-->
+    <SolidColorBrush x:Key="titleColor">#FBA1AA</SolidColorBrush>
+    
+</ResourceDictionary>
