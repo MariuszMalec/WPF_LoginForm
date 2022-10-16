@@ -13,20 +13,35 @@ namespace WPF_LoginForm.Repositories
     public class UserRepository : RepositoryBase, IUserRepository
     {
 
+        private static IEnumerable<UserModel> Users = new List<UserModel>()
+        {
+            new UserModel() {Id=1, Email="mario@example.com",FirstName="Mariusz",LastName="Malec", UserName="qwerty", Password="qwerty" }
+        };
+        public IEnumerable<UserModel> GetAllUsers()
+        {
+            return Users;
+        }
+
         public bool AuthenticateUser(NetworkCredential credential)
         {
             bool validUser;
 
-            using (var connection = GetConnection())
-            using (var command=new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "select *from [User] where username=@username and [Password]=@password";
-                command.Parameters.Add("@username", System.Data.SqlDbType.NVarChar).Value=credential.UserName;
-                command.Parameters.Add("@password", System.Data.SqlDbType.NVarChar).Value = credential.Password;
-                validUser = command.ExecuteScalar() == null ? false : true;
-            }
+            var users = GetAllUsers();
+
+            validUser = users.Where(u => u.UserName == credential.UserName).Where(u => u.Password == credential.Password).Any();
+                             ;
+
+            //using (var connection = GetConnection())
+            //using (var command=new SqlCommand())
+            //{
+            //    connection.Open();
+            //    command.Connection = connection;
+            //    command.CommandText = "select *from [User] where username=@username and [Password]=@password";
+            //    command.Parameters.Add("@username", System.Data.SqlDbType.NVarChar).Value=credential.UserName;
+            //    command.Parameters.Add("@password", System.Data.SqlDbType.NVarChar).Value = credential.Password;
+            //    validUser = command.ExecuteScalar() == null ? false : true;
+            //}
+
             return validUser;
         }
 
@@ -51,7 +66,17 @@ namespace WPF_LoginForm.Repositories
 
         public UserModel GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            UserModel user = null;
+
+            var users = GetAllUsers();
+
+            if (users.Any())
+            {
+                var userModel = users.Where(u=>u.UserName == userName).FirstOrDefault();
+                return userModel;
+            }
+
+            return user;
         }
 
         public void Remove(int id)
