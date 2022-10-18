@@ -29,7 +29,7 @@ namespace WPF_LoginForm.ViewModel
             if (user!=null)
             {
                 CurrentUserAccount.UserName = user.UserName;
-                CurrentUserAccount.DisplayName = $"Welcome {user.FirstName} {user.LastName}";
+                CurrentUserAccount.DisplayName = $"Welcome {user.Name} {user.LastName}";
                 CurrentUserAccount.ProfilePicture = null;
             }
             else
