@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Threading;
 using WPF_LoginForm.Model;
 using WPF_LoginForm.Repositories;
 
@@ -25,6 +19,7 @@ namespace WPF_LoginForm.ViewModel
         public MainViewModel()
         {
             _userRepository = new UserRepository();
+            CurrentUserAccount = new UserAccountModel();
             LoadCurrentUserData();
         }
 
@@ -33,17 +28,15 @@ namespace WPF_LoginForm.ViewModel
             var user = _userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);
             if (user!=null)
             {
-                CurrentUserAccount = new UserAccountModel()
-                {
-                    UserName = user.UserName,
-                    DisplayName = $"Welcome {user.FirstName} {user.LastName}",
-                    ProfilePicture=null
-                };
+                CurrentUserAccount.UserName = user.UserName;
+                CurrentUserAccount.DisplayName = $"Welcome {user.FirstName} {user.LastName}";
+                CurrentUserAccount.ProfilePicture = null;
             }
             else
             {
-                MessageBox.Show("Invalid user, not logged in");
-                Application.Current.Shutdown();
+                //https://youtu.be/FGqj4q09NtA?t=2125
+                CurrentUserAccount.DisplayName = "Invalid user, not logged in";
+                //Hide;
             }
         }
     }
