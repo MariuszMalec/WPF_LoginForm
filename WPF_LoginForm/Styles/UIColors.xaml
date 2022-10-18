@@ -3,11 +3,22 @@
     <!--https://youtu.be/kxhvwGEqvcs?t=254-->
     <!--Bacground colors -->
     <Color x:Key="primaryBackColor">#462AD8</Color>
+    <Color x:Key="primaryBackColor2">#4cc9f0</Color>
+    <Color x:Key="primaryBackColor3">blue</Color>
 
     <!--windows border colors-->
     <Color x:Key="winBorderColor">#8A16C1</Color>
+    <Color x:Key="winBorderColor2">#fb8500</Color>
+    
+    <!--Color palette-->
+    <SolidColorBrush x:Key="color1">#FBA1AA</SolidColorBrush>
+    <SolidColorBrush x:Key="color2">#8ac926</SolidColorBrush>
+    <SolidColorBrush x:Key="color3">#ffc300</SolidColorBrush>
+    <SolidColorBrush x:Key="color4">#e56b6f</SolidColorBrush>
+    <SolidColorBrush x:Key="color5">#4361ee</SolidColorBrush>
 
     <!--fonts colors-->
     <SolidColorBrush x:Key="titleColor">#FBA1AA</SolidColorBrush>
+    <SolidColorBrush x:Key="titleColor2">#ffc300</SolidColorBrush>
     
 </ResourceDictionary>
