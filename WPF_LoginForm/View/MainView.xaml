@@ -107,9 +107,58 @@
                             <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
+                    
+                    <!--https://youtu.be/kxhvwGEqvcs?t=1391-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--Control bar-->
+                            <RowDefinition Height="25"/>
+                            <!--Header-->
+                            <RowDefinition Height="35"/>
+                            <!--Content section-->
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel x:Name="pnlControlBar"
+                                    Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    Background="Transparent"
+                                    Margin="0,0,5,0"
+                                    MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
+                                    MouseEnter="plnControlBar_MouseEnter">
+
+                            <Button x:Name="btnClose"
+                                    Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource color4}"
+                                    Click="btnClose_Click">
+                                <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                            </Button>
+
+                            <Button x:Name="btnMinize"
+                                    Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource color3}"
+                                    Click="btnMinimize_Click">
+                                <fa:IconImage Icon="WindowMinimize" Style="{StaticResource controlButtonIcon}"/>
+                            </Button>
+
+                            <Button x:Name="btnMaximize"
+                                    Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource color5}"
+                                    Click="btnMazimize_Click">
+                                <fa:IconImage Icon="WindowMaximize" Style="{StaticResource controlButtonIcon}"/>
+                            </Button>
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+
                 </Border>
 
-                <!--https://youtu.be/kxhvwGEqvcs?t=1391-->
+                
+
 
             </Grid>
 

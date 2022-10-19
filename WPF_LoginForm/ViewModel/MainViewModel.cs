@@ -20,7 +20,7 @@ namespace WPF_LoginForm.ViewModel
         {
             _userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
-            LoadCurrentUserData();
+            //LoadCurrentUserData();
         }
 
         private void LoadCurrentUserData()
