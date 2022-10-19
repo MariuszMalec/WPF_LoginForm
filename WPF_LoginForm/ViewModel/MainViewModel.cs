@@ -20,12 +20,15 @@ namespace WPF_LoginForm.ViewModel
         {
             _userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
-            //LoadCurrentUserData();
+            LoadCurrentUserData();
         }
 
         private void LoadCurrentUserData()
         {
-            var user = _userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);
+
+            //Thread.CurrentPrincipal.Identity.Name//TODO to nuluje nie wiem czemu jak wrzucam do getbyusername
+
+            var user = _userRepository.GetByUserName("");
             if (user!=null)
             {
                 CurrentUserAccount.UserName = user.UserName;

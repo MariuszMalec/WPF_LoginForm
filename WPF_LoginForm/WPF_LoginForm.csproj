@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Images\hacker32X32.png" />
     <None Remove="Images\hackerX512.png" />
+    <None Remove="Images\homeview.PNG" />
     <None Remove="Images\ja.jpg" />
   </ItemGroup>
 
@@ -27,6 +28,7 @@
     <Resource Include="Images\hackerX512.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\homeview.PNG" />
     <Resource Include="Images\ja.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

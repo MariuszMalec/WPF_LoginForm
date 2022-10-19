@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:WPF_LoginForm.ViewModel"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800"
+        Title="MainView" Height="450" Width="850"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
@@ -185,10 +185,13 @@
 
                                 <Button Style="{StaticResource iconButton}"
                                         Tag="{StaticResource color1}">
-                                    <fa:IconImage Icon="AngleDown" Style="{StaticResource iconButtonIcon}"/>
+                                    <fa:IconImage Icon="AngleDown"
+                                                  Height="12"
+                                                  Width="12"
+                                                  Style="{StaticResource iconButtonIcon}"/>
                                 </Button>
 
-                                <TextBlock Text="{Binding CurrentUserAccount.UserName}"
+                                <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
                                            Foreground="{StaticResource titleColor3}"
                                            FontSize="12"
                                            VerticalAlignment="Center"/>
@@ -218,6 +221,11 @@
                             </StackPanel>
                             
                         </Grid>
+
+                        <!--Content section-->
+                        <ContentControl Content=""
+                                        Grid.Row="2"
+                                        Margin="25"/>
 
 
                     </Grid>
