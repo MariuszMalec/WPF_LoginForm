@@ -108,6 +108,41 @@
                             </StackPanel>
                         </RadioButton>
 
+
+                        <!--Caption-->
+                        <StackPanel Grid.Column="0"
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center">
+
+                            <fa:IconImage Icon="FileText"
+                                              Height="20"
+                                              Width="20"
+                                              Foreground="{StaticResource titleColor2}"
+                                              Margin="35,0,10,0"/>
+                            <TextBlock Text="Wpisz text: "
+                                           Foreground="{StaticResource titleColor2}"
+                                           FontSize="16"
+                                           FontWeight="Medium"
+                                           VerticalAlignment="Center"/>
+
+                            <TextBox Text="Wpisz cosik"
+                                     FontStyle="Italic"
+                                     Foreground="GreenYellow"
+                                     Background="{StaticResource PanelColor}"
+                                     VerticalAlignment="Center"
+                                     Width="100"/>
+
+                        </StackPanel>
+
+                        <StackPanel Margin="10">
+                            <ComboBox Style="{StaticResource menuComboBox}">
+                                <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
+                                <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+
                     </StackPanel>
 
                 </Border>

@@ -24,6 +24,7 @@ namespace WPF_LoginForm.View
             InitializeComponent();
         }
 
+        //TODO https://youtu.be/kxhvwGEqvcs?t=1537
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)

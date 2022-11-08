@@ -76,10 +76,10 @@ namespace WPF_LoginForm.ViewModel
         private void LoadCurrentUserData()
         {
 
-            //Thread.CurrentPrincipal.Identity.Name//TODO to nuluje nie wiem czemu jak wrzucam do getbyusername
+            //Thread.CurrentPrincipal.Identity.Name//TODO to anuluje nie wiem czemu jak wrzucam do getbyusername
 
-            var user = _userRepository.GetByUserName("");
-            if (user!=null)
+            var user = _userRepository.GetByUserName(Thread.CurrentPrincipal.Identity.Name);
+            if (user != null)
             {
                 CurrentUserAccount.UserName = user.UserName;
                 CurrentUserAccount.DisplayName = $"Welcome {user.Name} {user.LastName}";

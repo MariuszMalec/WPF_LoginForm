@@ -122,4 +122,20 @@
         <Setter Property="Height" Value="16"/>
     </Style>
 
+    <Style x:Key="menuTextBox" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=TextBox}}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="13.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="100"/>
+    </Style>
+
+    <Style x:Key="menuComboBox" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=ComboBox}}"/>
+        <Setter Property="Background" Value="{StaticResource color5}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="13.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
 </ResourceDictionary>
