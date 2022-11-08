@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Security;
 using System.Security.Principal;
 using System.Threading;
@@ -51,12 +52,14 @@ namespace WPF_LoginForm.ViewModel
         public ICommand ShowPasswordCommand { get; }
         public ICommand RememberPasswordCommand { get; }
 
+        private readonly ILogger _logger;
+
         //constructor
         public LoginViewModel()
         {
             _userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
-            RecoverPasswordCommand = new ViewModelCommand(p => ExecuteRecoverPasswordCommand("",""));
+            RecoverPasswordCommand = new ViewModelCommand(p => ExecuteRecoverPasswordCommand("", ""));
         }
 
         private void ExecuteRecoverPasswordCommand(string userName, string email)
@@ -77,6 +80,8 @@ namespace WPF_LoginForm.ViewModel
         private void ExecuteLoginCommand(object obj)
         {
             //https://youtu.be/FGqj4q09NtA?t=1529
+
+
 
             var isValidUser = _userRepository.AuthenticateUser(new System.Net.NetworkCredential(UserName,Password));
 

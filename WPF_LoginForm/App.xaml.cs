@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -8,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using WPF_LoginForm.View;
+using WPF_LoginForm.ViewModel;
 
 namespace WPF_LoginForm
 {
@@ -39,6 +44,29 @@ namespace WPF_LoginForm
         public App()
         {
             this.DispatcherUnhandledException += this.App_DispatcherUnhandledException;
+
+
+            var builder = new ConfigurationBuilder();
+            BuildConfig(builder);
+
+            ILogger logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(builder.Build())
+                .WriteTo.RollingFile("C:\\temp\\logs\\WPf_LoginFormlog-{Date}.log",
+                            outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] [{SourceContext}] [{EventId}] {Message}{NewLine}{Exception}")
+                .CreateLogger();
+
+            logger.Information("App starting");
+
+            var host = Host.CreateDefaultBuilder()
+                    .ConfigureServices((context, services) =>
+                    {
+                        services.AddTransient<LoginViewModel>();
+                        services.AddTransient<LoginView>();
+                        services.AddSingleton(logger);
+                    })
+                    .UseSerilog()
+                    .Build();
+
             try
             {
                 //App.Settings = new Settings();
@@ -60,6 +88,13 @@ namespace WPF_LoginForm
         {
             string text = $"{exception.Message}{Environment.NewLine}{exception.StackTrace}";
             File.WriteAllText(fileLog, text);
+        }
+        static void BuildConfig(IConfigurationBuilder builder)//TODO to trzeba dodac!
+        {
+            builder
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                ;
         }
     }
 }
